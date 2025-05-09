@@ -13,6 +13,8 @@ app.use(express.json());
 
 app.use('/api/user', require('./routes/userRoutes'));
 
+app.use('/api/goals',require('./routes/goalRoutes'));
+
 app.use(errorHandler);
 
 app.listen(process.env.PORT, () => {
