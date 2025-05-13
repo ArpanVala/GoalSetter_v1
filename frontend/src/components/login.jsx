@@ -2,14 +2,56 @@ import { cn } from "@/lib/utils"
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
-import { Link } from "react-router-dom"
+//main
+import { Link, useNavigate } from "react-router-dom"
+import {useEffect, useState} from "react"
+import {useSelector, useDispatch} from 'react-redux'
+import {toast} from 'react-toastify'
+import {login, reset} from '../features/auth/authSlice'
 
 export function LoginForm({
   className,
   ...props
 }) {
+  const [formData, setFormData] = useState({
+    "email":'',
+    "password":''
+  })
+
+  const {email, password} = formData
+
+  const navigate = useNavigate()
+  const dispatch = useDispatch()
+
+  const {user, isError, isSuccess, message} = useSelector((state) => state.auth)
+  useEffect(()=>{
+    if(isError){
+      toast.error(message)
+    }
+    if(isSuccess || user){
+      navigate('/dashboard')
+    }
+    dispatch(reset())
+  },[isError, isSuccess, message, dispatch, navigate])
+
+  const onChange = (e) =>{
+    setFormData((prev)=>({
+      ...prev,
+      [e.target.name]: e.target.value
+    }))
+  }
+
+  const onSubmit = (e) => {
+    e.preventDefault()
+    const userData = {
+      email,
+      password
+    }
+    dispatch(login(userData))
+  }
+
   return (
-    <form className={cn("flex flex-col gap-6", className)} {...props}>
+    <form onSubmit={onSubmit} className={cn("flex flex-col gap-6", className)} {...props}>
    
 
       <div className="flex flex-col items-center gap-2 text-center">
@@ -21,13 +63,13 @@ export function LoginForm({
       <div className="grid gap-6">
         <div className="grid gap-3">
           <Label htmlFor="email">Email</Label>
-          <Input id="email" type="email" placeholder="m@example.com" name="email" required />
+          <Input id="email" type="email" name="email" value={email} onChange={onChange} required />
         </div>
         <div className="grid gap-3">
           <div className="flex items-center">
             <Label htmlFor="password">Password</Label>
           </div>
-          <Input id="password" type="password" name="password" required />
+          <Input id="password" type="password" name="password" value={password} onChange={onChange} required />
             <a href="#" className="mr-auto text-sm underline-offset-4 hover:underline">
               Forgot your password?
             </a>

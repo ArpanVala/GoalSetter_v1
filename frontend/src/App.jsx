@@ -13,6 +13,7 @@ const App = () => {
         <Route path="/login" element={<LoginPage />} />
         <Route path="/register" element={<RegisterPage />} />
         <Route path="/" element={<Navbar />} />
+        <Route path="/dashboard" element={<Navbar />} />
       </Routes>
        <ToastContainer/>
     </BrowserRouter>

@@ -1,9 +1,10 @@
 import axios from 'axios';
 
-const API_URL = 'http://localhost:3000/api/users/'
+const API_URL = 'http://localhost:3000/api/user/'
 
 // Register user
 const register = async (userData) => {
+    console.log("Registering with data:", userData);
     const response = await axios.post(API_URL + 'register', userData);
     if (response.data) {
         localStorage.setItem('user', JSON.stringify(response.data));

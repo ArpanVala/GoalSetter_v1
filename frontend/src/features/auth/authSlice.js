@@ -1,6 +1,5 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import authService from "./authService";
-import { create } from "domain";
 
 //question: why is this line necessary?
 const user = JSON.parse(localStorage.getItem("user"));

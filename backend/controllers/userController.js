@@ -17,7 +17,7 @@ const generateToken = (id) => {
 
 
 //@desc register user
-//@route POST /api/user/
+//@route POST /api/user/register
 //@access Public
 const registerUser = asyncHandler(async(req,res)=>{
     const {name, email, password, confirmPassword} = req.body;

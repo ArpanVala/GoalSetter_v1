@@ -2,9 +2,9 @@ const userRouter = require('express').Router();
 const {registerUser, loginUser} = require('../controllers/userController');
 
 //@desc register user
-//@route POST /api/user/
+//@route POST /api/user/register
 //@access Public
-userRouter.post('/', registerUser)
+userRouter.post('/register', registerUser)
 
 
 //@desc login user

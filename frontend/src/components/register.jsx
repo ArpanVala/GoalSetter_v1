@@ -10,11 +10,66 @@ import {
 import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
 import { Link } from "react-router-dom"
+//main imports
+import {useEffect, useState} from "react"
+import {useSelector, useDispatch} from 'react-redux'
+import {toast} from 'react-toastify'
+import {register, reset} from '../features/auth/authSlice'
+import { useNavigate } from "react-router-dom"
 
 export function RegisterForm({
   className,
   ...props
-}) {
+}
+){
+  const [formData, setFormData] = useState({
+    "name":"",
+    "email":"",
+    "password":"",
+    "confirmPassword":""
+  })
+
+  const {name, email, password, confirmPassword} = formData
+  const navigate = useNavigate()
+  const dispatch = useDispatch()
+
+  const {user, isError, isSuccess, message} = useSelector((state) => state.auth)
+  useEffect(()=>{
+    if(isError){
+      toast.error(message)
+    }
+    if(isSuccess || user){
+      navigate('/dashboard')
+    }
+    dispatch(reset())
+
+  },[user, isError, isSuccess, message, dispatch, navigate])
+
+  const onChange = (e) => {
+    setFormData((prev)=>({
+      ...prev,
+      [e.target.name]: e.target.value,
+    }))
+  }
+
+  const onSubmit = (e) => {
+    e.preventDefault()
+    if(password !== confirmPassword)
+    {
+      toast.error("Passwords do not match")
+    }
+    else
+    {
+      const userData = {
+        name,
+        email,
+        password,
+        confirmPassword
+      }
+      dispatch(register(userData))
+    }
+  }
+
   return (
     <div className={cn("flex flex-col gap-6", className)} {...props}>
       <Card className="border-0 shadow-none w-85 md:w-100">
@@ -25,7 +80,7 @@ export function RegisterForm({
           </CardDescription>
         </CardHeader>
         <CardContent>
-          <form>
+          <form onSubmit={onSubmit}>
             <div className="grid gap-6">
               <div className="flex flex-col gap-4">
                 <Button variant="outline" className="w-full">
@@ -54,21 +109,21 @@ export function RegisterForm({
               <div className="grid gap-6">
                <div className="grid gap-3">
                   <Label htmlFor="name">Name</Label>
-                  <Input id="name" type="text" placeholder="Enter your name" name="name" required />
+                  <Input id="name" type="text" placeholder="Enter your name" name="name" value={name} onChange={onChange} required />
                 </div>
                 <div className="grid gap-3">
                   <Label htmlFor="email">Email</Label>
-                  <Input id="email" type="email" placeholder="m@example.com" name="email" required />
+                  <Input id="email" type="email" placeholder="m@example.com" name="email"  value={email} onChange={onChange} required />
                 </div>
                 <div className="grid gap-3">
                   <div className="flex items-center">
                     <Label htmlFor="password">Password</Label>
                   </div>
-                  <Input id="password" type="password" name="password" required />
+                  <Input id="password" type="password" name="password"  value={password} onChange={onChange} required />
                 </div>
                  <div className="grid gap-3">
                   <Label htmlFor="confirmPassword">Confirm Password</Label>
-                  <Input id="confirmPassword" type="password" name="confirmPassword" required />
+                  <Input id="confirmPassword" type="password" name="confirmPassword"  value={confirmPassword} onChange={onChange} required />
                 </div>
                 <Button type="submit" className="w-full">
                   Register
