@@ -129,9 +129,10 @@ export function RegisterForm({
                   Register
                 </Button>
               </div>
-              <div className="text-center text-sm">
+              <div className="text-sm">
                 Already have an account?{" "}
                <Link to="/login" className="underline underline-offset-4 hover:font-medium hover:text-blue-500">Log in</Link>
+               <Link to="/" className="bg-black font-semibold px-2 py-1 float-right text-white rounded">Go Back</Link>
               </div>
             </div>
           </form>
