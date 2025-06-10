@@ -23,9 +23,9 @@ export default function Navbar({ isLoggedIn }) {
       <li className='hover:text-gray-400 cursor-pointer'>
         <Link to='/login'>Log in</Link>
       </li>
-      <button className="p-2 bg-blue-500 hover:bg-blue-600 text-white rounded-md cursor-pointer">
-        <Link to='/register'>Get Started</Link>
-      </button>
+      <Link to='/register' className="p-2 bg-blue-500 hover:bg-blue-600 text-white rounded-md cursor-pointer text-center">
+        <button>Get Started</button>
+      </Link>
     </>
   );
 
@@ -42,7 +42,7 @@ export default function Navbar({ isLoggedIn }) {
 
         {/* Hamburger for small screens */}
         <button
-          className="md:hidden text-gray-700 focus:outline-none"
+          className="md:hidden text-gray-700 focus:outline-none text-lg"
           onClick={() => setMenuOpen(!menuOpen)}
         > {menuOpen ? (
           <FaAngleUp />
@@ -52,20 +52,20 @@ export default function Navbar({ isLoggedIn }) {
         </button>
 
         {/* Desktop Nav */}
-        <ul className="hidden md:flex items-center gap-6 text-sm">
+        <ul className="hidden md:flex text-gray-500 items-center gap-6 text-[15px] font-medium ">
           {isLoggedIn ? loggedInLinks : loggedOutLinks}
         </ul>
       </nav>
 
       {/* Mobile Nav */}
       {menuOpen && (
-        <ul className="md:hidden flex flex-col gap-4 text-sm px-2 pb-4">
+        <ul className="md:hidden text-gray-600 flex flex-col gap-4 text-[14px] font-semibold px-2 py-4">
           {isLoggedIn ? loggedInLinks : loggedOutLinks}
         </ul>
       )}
 
       {/* Divider */}
-      <div className='border border-gray-100'></div>
+      <div className='border border-gray-200 md:border-gray-100'></div>
     </div>
   );
 }
