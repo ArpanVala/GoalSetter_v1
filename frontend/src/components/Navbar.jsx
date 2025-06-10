@@ -22,7 +22,7 @@ export default function Navbar() {
 
   const loggedInLinks = (
     <>
-      <li className='hover:text-gray-400 cursor-pointer'>Dashboard</li>
+      <li className='hover:text-gray-400 cursor-pointer'><Link to='/dashboard'>Dashboard</Link></li>
       <li className='hover:text-gray-400 cursor-pointer'>Categories</li>
       <li className='hover:text-gray-400 cursor-pointer'>Add Goal</li>
       <li className='px-2 py-1 bg-gray-100 text-gray-500 rounded-lg hover:bg-gray-200 cursor-pointer' onClick={onLogout}>Logout</li>

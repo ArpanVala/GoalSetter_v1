@@ -25,19 +25,19 @@ const Dashboard = () => {
         </div>
 
         <div className='grid grid-cols-2 md:grid-cols-4 gap-4'>
-            <div className='bg-violet-100 px-4 py-6 rounded-lg md:border-3 border-transparent hover:border-gray-400 hover:cursor-pointer '>
+            <div className='bg-blue-50 px-4 py-6 rounded-lg md:border-3 border-transparent hover:border-gray-400 hover:cursor-pointer '>
                 <h2 className='text-lg font-medium text-gray-500 '>Goal Categories</h2>
                 <h1 className='text-xl font-semibold text-gray-700'>5</h1>
             </div>
-            <div className='bg-violet-100 px-4 py-6 rounded-lg md:border-3 border-transparent hover:border-gray-400 hover:cursor-pointer '>
+            <div className='bg-blue-50 px-4 py-6 rounded-lg md:border-3 border-transparent hover:border-gray-400 hover:cursor-pointer '>
                 <h2 className='text-lg font-medium text-gray-500 '>Total Goals</h2>
                 <h1 className='text-xl font-semibold text-gray-700'>20</h1>
             </div>
-            <div className='bg-violet-100 px-4 py-6 rounded-lg md:border-3 border-transparent hover:border-gray-400 hover:cursor-pointer '>
+            <div className='bg-blue-50 px-4 py-6 rounded-lg md:border-3 border-transparent hover:border-gray-400 hover:cursor-pointer '>
                 <h2 className='text-lg font-medium text-gray-500 '>Completed Goals</h2>
                 <h1 className='text-xl font-semibold text-gray-700'>12</h1>
             </div>
-            <div className='bg-violet-100 px-4 py-6 rounded-lg md:border-3 border-transparent hover:border-gray-400 hover:cursor-pointer '>
+            <div className='bg-blue-50 px-4 py-6 rounded-lg md:border-3 border-transparent hover:border-gray-400 hover:cursor-pointer '>
                 <h2 className='text-lg font-medium text-gray-500 '>Due Goals</h2>
                 <h1 className='text-xl font-semibold text-gray-700'>8</h1>
             </div>
@@ -47,7 +47,7 @@ const Dashboard = () => {
             <h1 className='text-lg md:text-xl  text-gray-700 font-semibold'>Quick Actions</h1>
             <div className='space-x-2 mt-2'>
             <button className='text-md md:text-lg  bg-blue-500 hover:bg-blue-600 text-blue-50 px-3 py-1 rounded-md'>Add New Goal</button>
-            <button className='text-md md:text-lg md:border-2 border-transparent bg-violet-100 hover:border-gray-400 text-gray-700 px-3 py-1 rounded-md '>View all Goals</button>
+            <button className='text-md md:text-lg md:border-2 border-transparent bg-blue-50 hover:border-gray-400 text-gray-700 px-3 py-1 rounded-md '>View all Goals</button>
             </div>
         </div>
 
