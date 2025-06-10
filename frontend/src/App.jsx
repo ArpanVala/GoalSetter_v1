@@ -7,7 +7,7 @@ import Dashboard from './pages/Dashboard'
 
 const App = () => {
   return (
-    <>
+    <div className="bg-gray-50 min-h-screen">
       <Navbar/>
       <ToastContainer/>
       {/* <div>
@@ -25,7 +25,7 @@ const App = () => {
         <Route path="/dashboard" element={<Dashboard/>}/>
       </Routes>
        <ToastContainer/>
-    </>
+    </div>
   )
 }
 
