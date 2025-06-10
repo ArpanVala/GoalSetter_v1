@@ -4,7 +4,6 @@ import {useSelector, useDispatch} from 'react-redux'
 import {toast} from 'react-toastify'
 import {login, reset} from '../features/auth/authSlice'
 import { FaGoogle } from 'react-icons/fa'
-import React from 'react'
 
 const LoginPage = () => {
   const [formData, setFormData] = useState({
@@ -23,7 +22,7 @@ const LoginPage = () => {
       toast.error(message)
     }
     if(isSuccess || user){
-      toast.success("Successfully Logged In")
+      // toast.success("Successfully Logged In")
       navigate('/dashboard')
     }
     dispatch(reset())

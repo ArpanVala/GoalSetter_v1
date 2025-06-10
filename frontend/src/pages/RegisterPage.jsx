@@ -23,10 +23,12 @@ const RegisterPage = () => {
   useEffect(()=>{
     if(isError){
       toast.error(message)
+      
     }
     if(isSuccess || user){
-      toast.success("Successfully Registered")
+      // toast.success("Successfully Registered")
       navigate('/dashboard')
+      
     }
     dispatch(reset())
 

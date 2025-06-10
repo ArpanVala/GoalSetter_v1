@@ -3,13 +3,12 @@ import LoginPage from './pages/LoginPage'
 import { ToastContainer } from 'react-toastify'
 import RegisterPage from './pages/RegisterPage'
 import Navbar from "./components/Navbar"
-import React from 'react'
+import Dashboard from './pages/Dashboard'
 
 const App = () => {
-  const [isLoggedIn, setIsLoggedIn] = React.useState(false);
   return (
     <>
-      <Navbar isLoggedIn={isLoggedIn} />
+      <Navbar/>
       <ToastContainer/>
       {/* <div>
         <button 
@@ -21,9 +20,9 @@ const App = () => {
       </div> */}
 
       <Routes>
-        <Route path="/login" element={<LoginPage />} />
-        <Route path="/register" element={<RegisterPage />} />
-        <Route path="/dashboard" />
+        <Route path="/login" element={<LoginPage/>} />
+        <Route path="/register" element={<RegisterPage/>} />
+        <Route path="/dashboard" element={<Dashboard/>}/>
       </Routes>
        <ToastContainer/>
     </>
