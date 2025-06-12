@@ -1,10 +1,24 @@
-import React from 'react'
-import { useParams } from 'react-router-dom'
+import React,{useEffect} from 'react'
+import { useNavigate, useParams } from 'react-router-dom'
 import { FaPlus } from 'react-icons/fa'
 import ListCategoryGoals from '../components/ListCategoryGoals'
+import { useDispatch, useSelector } from 'react-redux'
+import { toast } from 'react-toastify'
+
 
 const CategoryPage = () => {
     const { id } = useParams()
+    const {user} = useSelector((state) => state.auth);
+   
+    const navigate = useNavigate()
+    const dispatcher = useDispatch()
+
+    useEffect(()=>{
+        if(!user){
+            // If user is not logged in, redirect to login page or show an error
+            navigate('/login')
+        }
+    },[user])
   return (
     <div className='max-w-[1048px] mx-auto px-4 my-5 md:my-8'>
       <div>
@@ -12,18 +26,18 @@ const CategoryPage = () => {
 
         <div className='grid grid-cols-1 md:grid-cols-3 gap-4 my-5'>
             <div className='px-4 py-3 rounded-lg border-3 border-gray-200 hover:bg-gray-200 '>
-                <h4 className='text-md text-gray-600 font-medium'>Total Goals</h4>
-                <p>12</p>
+                <h4 className='text-sm text-gray-600 font-medium'>Total Goals</h4>
+                <p className='text-sm font-bold text-gray-600'> 12</p>
             </div>
             
             <div className='px-4 py-3 rounded-lg border-3 border-gray-200 hover:bg-gray-200 '>
-                <h4 className='text-md text-gray-600 font-medium'>Completed</h4>
-                <p>5</p>
+                <h4 className='text-sm text-gray-600 font-medium'>Completed</h4>
+                <p  className='text-sm font-bold text-gray-600'>5</p>
             </div>
             
             <div className='px-4 py-3 rounded-lg border-3 border-gray-200 hover:bg-gray-200 '>
-                <h4 className='text-md text-gray-600 font-medium'>Remaining</h4>
-                <p>7</p>
+                <h4 className='text-sm text-gray-600 font-medium'>Remaining</h4>
+                <p  className='text-sm font-bold text-gray-600'>7</p>
             </div>
         </div>
 
@@ -36,7 +50,7 @@ const CategoryPage = () => {
         
         {/* Display progress bar */}
         <div className='my-5'>
-        <ProgressBar progress={80} />
+        <ProgressBar progress={55} />
         </div>
 
         {/* display list of Goals */}

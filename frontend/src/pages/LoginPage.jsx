@@ -46,7 +46,7 @@ const LoginPage = () => {
   return (
     <div className="max-w-[1048px] mx-auto px-4 my-5 md:my-8 flex justify-center">
     <div className="w-full max-w-md space-y-6">
-      <div flex flex-col items-center justify-center gap-2>
+      <div className='flex flex-col items-center justify-center gap-2'>
         <h1 className="text-2xl font-bold text-center">Welcome Back!</h1>
         <p className="text-md text-gray-500 text-center "> Enter your credentials to login to your account</p>
       </div>
