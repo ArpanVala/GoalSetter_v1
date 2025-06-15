@@ -23,11 +23,6 @@ const goalSchema = new mongoose.Schema({
         type:Date,
         required:[true, 'Please enter a due date']
     },
-    status:{
-        type:String,
-        enum:['Not Started', 'In Progress', 'Completed'],
-        default:'Not Started'
-    },
 },{timestamps:true})
 
 module.exports = mongoose.model('Goal', goalSchema)

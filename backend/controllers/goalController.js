@@ -15,21 +15,19 @@ const getGoals = asyncHandler(async(req,res)=>{
 //@route POST /api/goals
 //@access Private
 const setGoal = asyncHandler(async(req,res)=>{
-    if(!req.body.goal && !req.body.priority && !req.body.dueDate)
+    if(!req.body.goal && !req.body.category  && !req.body.priority && !req.body.dueDate)
     {
         res.status(400);
         throw new Error('Please add all fields');
     }
-    const {goal, priority, dueDate} = req.body;
+    const {goal, category, priority, dueDate} = req.body;
     const goalData = await Goal.create({
         user:req.user.id,
         goal,
-        category:req.body.category || 'Personal',
+        category,
         priority,
         dueDate,
-        status:req.body.status || 'Not Started'
     })
-
     res.status(200).json({goalData});
 })
 
@@ -55,17 +53,18 @@ const updateGoal = asyncHandler(async(req,res)=>{
         res.status(401);
         throw new Error('User not authorized');
     }
-    if(!req.body.goal && !req.body.priority && !req.body.dueDate && !req.body.category && !req.body.status)
+    if(!req.body.goal && !req.body.priority && !req.body.dueDate && !req.body.category)
     {
         res.status(400);
         throw new Error('Please add all fields');
     }
+
     const goalData = {
         goal:req.body.goal,
         category:req.body.category,
         priority:req.body.priority,
         dueDate:req.body.dueDate,
-        status:req.body.status
+    
     }
     try{
         const updatedGoal = await Goal.findByIdAndUpdate(req.params.id, goalData , {new:true});
