@@ -24,6 +24,10 @@ const goalSchema = new mongoose.Schema({
         type:Date,
         required:[true, 'Please enter a due date']
     },
+    isCompleted: {
+        type: Boolean,
+        default: false
+      }
 },{timestamps:true})
 
 module.exports = mongoose.model('Goal', goalSchema)

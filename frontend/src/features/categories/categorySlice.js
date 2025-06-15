@@ -112,4 +112,4 @@ export const categorySlice = createSlice({
 });
 
 export const {reset} = categorySlice.actions;
-export default categorySlice.reducer;
+export default categorySlice.reducer;//for store.js

@@ -1,7 +1,6 @@
 import axios from 'axios';
 
-const API_URL = 'http://localholst:3000/api/goals/'
-
+const API_URL = 'http://localhost:3000/api/goals/'
 //create goal 
 const createGoal = async(goalData, token) => {
     const config = {
@@ -23,6 +22,17 @@ const getGoals = async(token) => {
     const response = await axios.get(API_URL, config);
     return response.data.goals; //because the API returns object of array named goals
 }
+
+
+// Get completed goals
+const getCompletedGoals = async (token) => {
+    const config = {
+      headers: { Authorization: `Bearer ${token}` },
+    };
+    const response = await axios.get(API_URL + completed, config);
+    return response.data.goals;
+  };
+
 //update goal
 const updateGoal = async(goalData, token) => {
     const config = {
@@ -50,6 +60,7 @@ const deleteGoal = async(goalId, token) => {
 const goalService = {
     createGoal,
     getGoals,
+    getCompletedGoals,
     updateGoal,
     deleteGoal
 }

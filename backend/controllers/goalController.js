@@ -17,12 +17,12 @@ const getGoals = asyncHandler(async(req,res)=>{
 //@route POST /api/goals
 //@access Private
 const setGoal = asyncHandler(async(req,res)=>{
-    if(!req.body.goal && !req.body.category  && !req.body.priority && !req.body.dueDate)
+    if(!req.body.goal || !req.body.category  || !req.body.priority || !req.body.dueDate)
     {
         res.status(400);
         throw new Error('Please add all fields');
     }
-    const {goal, category, priority, dueDate} = req.body;
+    const {goal, category, priority, dueDate, isCompleted} = req.body;
 
     // Check if category belongs to user
     const foundCategory = await Category.findOne({_id:category, user:req.user._id});
@@ -38,6 +38,7 @@ const setGoal = asyncHandler(async(req,res)=>{
         category,
         priority,
         dueDate,
+        isCompleted: isCompleted || false
     })
     res.status(200).json({goalData});
 })
@@ -64,7 +65,7 @@ const updateGoal = asyncHandler(async(req,res)=>{
         res.status(401);
         throw new Error('User not authorized');
     }
-    if(!req.body.goal && !req.body.priority && !req.body.dueDate && !req.body.category)
+    if(!req.body.goal || !req.body.priority || !req.body.dueDate || !req.body.category)
     {
         res.status(400);
         throw new Error('Please add all fields');
@@ -75,8 +76,10 @@ const updateGoal = asyncHandler(async(req,res)=>{
         category:req.body.category,
         priority:req.body.priority,
         dueDate:req.body.dueDate,
-    
+        isCompleted:req.body.isCompleted
     }
+
+   
     try{
         const updatedGoal = await Goal.findByIdAndUpdate(req.params.id, goalData , {new:true});
         res.status(200).json({updatedGoal}); 
@@ -86,6 +89,7 @@ const updateGoal = asyncHandler(async(req,res)=>{
         res.status(400);
         throw new Error('Error updating goal');
     }
+
 })
 
 //@desc delete goal
@@ -121,4 +125,16 @@ const deleteGoal = asyncHandler(async(req,res)=>{
     }
 })
 
-module.exports = { getGoals, setGoal, updateGoal, deleteGoal };
+//@desc Get all completed goals for the user
+//@route GET /api/goals/completed
+//@access Private
+const getCompletedGoals = asyncHandler(async (req, res) => {
+    const goals = await Goal.find({ 
+      user: req.user.id, 
+      isCompleted: true 
+    }).populate('category', 'name');
+  
+    res.status(200).json({ goals });
+  });
+
+module.exports = { getGoals, setGoal, updateGoal, deleteGoal, getCompletedGoals };
