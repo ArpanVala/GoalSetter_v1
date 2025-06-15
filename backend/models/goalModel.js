@@ -11,8 +11,9 @@ const goalSchema = new mongoose.Schema({
         required:[true, 'Please enter a goal']
     },
     category:{
-        type:String,
-        default:'Personal'
+        type:mongoose.Schema.Types.ObjectId,
+        ref:'Category',
+        required:true,
     },
     priority:{
         type:String,
