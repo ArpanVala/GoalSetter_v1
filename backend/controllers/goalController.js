@@ -1,5 +1,6 @@
 const asyncHandler = require('express-async-handler');
 const Goal = require('../models/goalModel');
+const Category = require('../models/categoryModel');
 const User = require('../models/userModel');
 
 
@@ -7,7 +8,8 @@ const User = require('../models/userModel');
 //@route GET /api/goals
 //@access Private
 const getGoals = asyncHandler(async(req,res)=>{
-    const goals = await Goal.find({user:req.user.id})
+    //populate() automatically replaces the category ObjectIdwith the full category document(but only the name field, due to 'name' as second argument).
+    const goals = await Goal.find({user:req.user.id}).populate('category', 'name')
     res.status(200).json({goals});
 })
 
@@ -21,6 +23,15 @@ const setGoal = asyncHandler(async(req,res)=>{
         throw new Error('Please add all fields');
     }
     const {goal, category, priority, dueDate} = req.body;
+
+    // Check if category belongs to user
+    const foundCategory = await Category.findOne({_id:category, user:req.user._id});
+    if(!foundCategory){
+        res.status(400);
+        throw new Error('Category not found!');
+    }
+
+
     const goalData = await Goal.create({
         user:req.user.id,
         goal,

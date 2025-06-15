@@ -15,6 +15,8 @@ app.use('/api/user', require('./routes/userRoutes'));
 
 app.use('/api/goals',require('./routes/goalRoutes'));
 
+app.use('/api/categories', require('./routes/categoryRoutes'));
+
 app.use(errorHandler);
 
 app.listen(process.env.PORT, () => {
