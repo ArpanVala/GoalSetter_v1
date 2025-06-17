@@ -1,14 +1,15 @@
-import {useEffect} from 'react'
+import {useEffect, useState} from 'react'
 import { useNavigate, useParams } from 'react-router-dom'
 import { useDispatch,useSelector } from 'react-redux'
 import { FaPlus } from 'react-icons/fa'
 import { getGoals, reset } from '../features/goals/goalSlice'
-import {getCategories, updateCategory, deleteCategory} from '../features/categories/categorySlice'
+import {getCategories, updateCategory} from '../features/categories/categorySlice'
 import ListCategoryGoals from '../components/ListCategoryGoals'
 import { toast } from 'react-toastify'
-
+import DeleteModal from '../components/DeleteModal'
 
 const CategoryPage = () => {
+    const [isOpen, setIsOpen] = useState(false)
     const { id } = useParams()
     const {user} = useSelector((state) => state.auth);
    
@@ -86,9 +87,10 @@ const CategoryPage = () => {
             <ListCategoryGoals goals={goalList}/>
         </div>
 
-        <div className='text-right'>
-          <button>Rename Category</button>
-          <button>Delete Category</button>
+        <div className='text-right space-x-2'>
+          <button className='text-sm px-2 py-1 bg-gray-100 hover:bg-gray-200 hover:shadow-lg border rounded'>Rename Category</button>
+          <button className='text-sm px-2 py-1 bg-red-100 hover:bg-red-200 hover:shadow-lg border border-red-700 rounded' onClick={() => setIsOpen(true)}>Delete Category</button>
+          <DeleteModal isOpen={isOpen} setIsOpen={setIsOpen} categoryId={id}/>
         </div>
       </div>
     </div>
