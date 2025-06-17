@@ -1,12 +1,15 @@
-import {useEffect} from 'react'
+import {useEffect,useState} from 'react'
 import { useDispatch,useSelector } from 'react-redux'
 import { Link, useNavigate } from 'react-router-dom'
 import { toast } from 'react-toastify'
 import { getGoals, reset } from '../features/goals/goalSlice'
 import {getCategories} from '../features/categories/categorySlice'
 import CategoryList from '../components/CategoryList'
+import CategoryModel from '../components/CategoryModel'
+
 
 const Dashboard = () => {
+    const [isOpen, setIsOpen] = useState(false)
   
     const dispatch = useDispatch()
     const navigate = useNavigate()
@@ -84,7 +87,8 @@ const Dashboard = () => {
             <h1 className='text-lg md:text-xl  text-gray-700 font-medium'>Quick Actions</h1>
             <div className='space-x-2 mt-2'>
             <button className='text-sm md:text-lg   bg-blue-500 hover:bg-blue-600 text-blue-50 px-3 py-1 rounded-md'>Add New Goal</button>
-            <button className='text-sm md:text-lg  md:border-2 border-transparent bg-blue-100 hover:border-gray-400 text-gray-700 px-3 py-1 rounded-md '>Add new Category</button>
+            <button className='text-sm md:text-lg  md:border-2 border-transparent bg-blue-100 hover:border-gray-400 text-gray-700 px-3 py-1 rounded-md'  onClick={() => setIsOpen(true)}>Add new Category</button>
+            <CategoryModel isOpen={isOpen} setIsOpen={setIsOpen} />
             </div>
         </div>
 
@@ -99,7 +103,7 @@ const Dashboard = () => {
           <div className='col-span-1 sm:col-span-2 md:col-span-3'>
             <div className="bg-white rounded-lg shadow p-8 text-center">
               <p className="text-gray-500 mb-2">No categories yet</p>
-              <button
+              <button onClick={() => setIsOpen(true)}
                 className="bg-blue-500 text-sm md:text-md  text-white px-4 py-2 rounded-lg hover:bg-blue-700 transition-colors"
               >
                 Create Your First Category
