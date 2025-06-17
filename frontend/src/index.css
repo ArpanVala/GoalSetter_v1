@@ -4,6 +4,7 @@
 
 body {
   font-family: 'Outfit', sans-serif;
+  @apply bg-gray-50;
   /* font-family: 'Inria Sans', sans-serif; */
 }
 .register-form input,

@@ -8,7 +8,7 @@ import CategoryPage from './pages/CategoryPage'
 
 const App = () => {
   return (
-    <div className="bg-gray-50 min-h-screen">
+    <div className="">
       <Navbar/>
       <ToastContainer/>
       {/* <div>
@@ -21,6 +21,7 @@ const App = () => {
       </div> */}
 
       <Routes>
+        <Route path="/" element={<LoginPage/>} />
         <Route path="/login" element={<LoginPage/>} />
         <Route path="/register" element={<RegisterPage/>} />
         <Route path="/dashboard" element={<Dashboard/>}/>
