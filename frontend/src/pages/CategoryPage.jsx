@@ -3,13 +3,15 @@ import { useNavigate, useParams } from 'react-router-dom'
 import { useDispatch,useSelector } from 'react-redux'
 import { FaPlus } from 'react-icons/fa'
 import { getGoals, reset } from '../features/goals/goalSlice'
-import {getCategories, updateCategory} from '../features/categories/categorySlice'
+import {getCategories} from '../features/categories/categorySlice'
 import ListCategoryGoals from '../components/ListCategoryGoals'
 import { toast } from 'react-toastify'
 import DeleteModal from '../components/DeleteModal'
+import RenameCategoryModal from '../components/RenameCategoryModal'
 
 const CategoryPage = () => {
-    const [isOpen, setIsOpen] = useState(false)
+  const [openDelete, setOpenDelete] = useState(false)
+  const [openRename, setOpenRename] = useState(false)
     const { id } = useParams()
     const {user} = useSelector((state) => state.auth);
    
@@ -46,7 +48,7 @@ const CategoryPage = () => {
     const completedGoals = goals.filter(goal => goal.category._id === id && goal.isCompleted).length;
     const remainingGoals = totalGoals - completedGoals;
     const progress = totalGoals > 0 ? Math.round((completedGoals / totalGoals) * 100) : '--';
-    console.log(goalList)
+    
 
   return (
     <div className='max-w-[1048px] mx-auto px-4 my-5 md:my-8'>
@@ -88,9 +90,11 @@ const CategoryPage = () => {
         </div>
 
         <div className='text-right space-x-2'>
-          <button className='text-sm px-2 py-1 bg-gray-100 hover:bg-gray-200 hover:shadow-lg border rounded'>Rename Category</button>
-          <button className='text-sm px-2 py-1 bg-red-100 hover:bg-red-200 hover:shadow-lg border border-red-700 rounded' onClick={() => setIsOpen(true)}>Delete Category</button>
-          <DeleteModal isOpen={isOpen} setIsOpen={setIsOpen} categoryId={id}/>
+          <button className='text-sm px-2 py-1 bg-gray-100 hover:bg-gray-200 hover:shadow-lg border rounded ' onClick={() => setOpenRename(true)} >Rename Category</button>
+          <button className='text-sm px-2 py-1 bg-red-100 hover:bg-red-200 hover:shadow-lg border border-red-700 rounded' onClick={() => setOpenDelete(true)}>Delete Category</button>
+
+          <RenameCategoryModal isOpen={openRename} setIsOpen={setOpenRename} categoryId={id} />
+          <DeleteModal isOpen={openDelete} setIsOpen={setOpenDelete} categoryId={id}/>
         </div>
       </div>
     </div>
