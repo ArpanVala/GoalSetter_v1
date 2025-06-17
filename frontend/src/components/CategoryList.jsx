@@ -8,7 +8,7 @@ const CategoryList = ({cat}) => {
   }
   return (
     <div onClick={() => onCategoryClick(cat.id)}>
-      <div className="bg-violet-50 border-1 border-violet-600 rounded p-4 grid grid-cols-3 cursor-pointer hover:shadow-lg hover:scale-101 transition-transform duration-300">
+      <div className="bg-sky-50 border-1 border-sky-600 rounded p-4 grid grid-cols-3 cursor-pointer hover:shadow-lg hover:scale-101 transition-transform duration-300">
             <div className='col-span-2'>
                 <h4 className="font-medium text-md md:text-lg text-gray-800 mb-2">{cat.name}</h4>
                 <p className='text-sm md:text-md'>{cat.totalGoals} goals</p>
@@ -28,7 +28,7 @@ const CategoryList = ({cat}) => {
                   a 15.9155 15.9155 0 0 1 0 -31.831"
                 />
                 <path
-                  className="text-violet-400"
+                  className="text-blue-400"
                   stroke="currentColor"
                   strokeWidth="3 "
                   strokeDasharray={`${cat.progress}, 100`}

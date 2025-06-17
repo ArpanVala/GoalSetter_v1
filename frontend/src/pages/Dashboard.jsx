@@ -86,8 +86,8 @@ const Dashboard = () => {
         <div className='my-5'>
             <h1 className='text-lg md:text-xl  text-gray-700 font-medium'>Quick Actions</h1>
             <div className='space-x-2 mt-2'>
-            <button className='text-sm md:text-lg   bg-blue-500 hover:bg-blue-600 text-blue-50 px-3 py-1 rounded-md'>Add New Goal</button>
-            <button className='text-sm md:text-lg  md:border-2 border-transparent bg-blue-100 hover:border-gray-400 text-gray-700 px-3 py-1 rounded-md'  onClick={() => setIsOpen(true)}>Add new Category</button>
+            <button className='bg-blue-500 hover:bg-blue-600 text-blue-50 px-3 py-1 rounded-md'>Add New Goal</button>
+            <button className='md:border-2 border-transparent bg-blue-100 hover:border-gray-400 text-gray-700 px-3 py-1 rounded-md'  onClick={() => setIsOpen(true)}>Add new Category</button>
             <CategoryModel isOpen={isOpen} setIsOpen={setIsOpen} />
             </div>
         </div>

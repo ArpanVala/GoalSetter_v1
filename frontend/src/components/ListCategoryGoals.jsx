@@ -1,15 +1,7 @@
 import { FaPen, FaTrashAlt } from 'react-icons/fa'
 import React, { useState } from "react";
 
-const initialGoals = [
-  { id: 1, title: "Run a marathon", due: "2024-12-31", priority: "High" },
-  { id: 2, title: "Lose 10 pounds", due: "2024-06-30", priority: "Medium" },
-  { id: 3, title: "Exercise 3 times a week", due: "Ongoing", priority: "High" },
-  { id: 4, title: "Increase bench press by 20 pounds", due: "2024-09-30", priority: "Medium" },
-  { id: 5, title: "Swim 1 mile", due: "2024-08-15", priority: "Low" },
-];
-
-const  ListCategoryGoal = () => {
+const  ListCategoryGoal = ({goals}) => {
   const [completedGoals, setCompletedGoals] = useState([]);
 
   const toggleGoal = (id) => {
@@ -27,7 +19,7 @@ const  ListCategoryGoal = () => {
       case "Low":
         return "bg-green-100 text-green-600";
       default:
-        return "";
+        return "bg-black";
     }
   };
 
@@ -45,22 +37,19 @@ const  ListCategoryGoal = () => {
           </tr>
         </thead>
         <tbody className="bg-white">
-          {initialGoals.map((goal, index) => (
+
+          {goals.length > 0 ? goals.map((goal, index) => (
             <tr
-              key={goal.id}
+              key={index}
               className={`border-t border-gray-400 hover:bg-gray-50 transition ${
-                completedGoals.includes(goal.id) ? "line-through text-gray-400" : ""
+                completedGoals.includes(goal.id) ? "line-through text-gray-900" : ""
               }`}
             >
               <td className="px-4 py-3">{index + 1}</td>
-              <td className="px-4 py-3">{goal.title}</td>
-              <td className="px-4 py-3">{goal.due}</td>
+              <td className="px-4 py-3">{goal.goal}</td>
+              <td className="px-4 py-3">{new Date(goal.dueDate).toLocaleDateString()}</td>
               <td className="px-4 py-3">
-                <span
-                  className={`px-3 py-1 rounded-md text-sm ${getPriorityColor(
-                    goal.priority
-                  )}`}
-                >
+                <span className={`px-3 py-1 rounded-md text-sm ${getPriorityColor(goal.priority)}`}>
                   {goal.priority}
                 </span>
               </td>
@@ -77,7 +66,13 @@ const  ListCategoryGoal = () => {
                 />
               </td>
             </tr>
-          ))}
+          )):(
+            <tr>
+              <td colSpan="6" className="px-4 py-3 text-center text-gray-500">
+                No goals found!
+              </td>
+            </tr>
+          )}
         </tbody>
       </table>
     </div>
