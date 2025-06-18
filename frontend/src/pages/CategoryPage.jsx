@@ -78,7 +78,7 @@ const CategoryPage = () => {
         </div>
 
         {/* Add New Goal */}
-        <div className='text-sm md:border-2 border-transparent bg-blue-100 hover:border-gray-400 text-gray-700 px-3 py-1 rounded-md flex items-center gap-2 w-fit'>
+        <div className='text-sm md:border-2 border-transparent bg-blue-100 hover:border-gray-400 text-gray-700 px-3 py-1 rounded-md flex items-center gap-2 w-fit' onClick={() =>  navigate(`/add-goal?category=${id}`)} >
             <button className=''>Add New Goal </button>
             <FaPlus size={12}/>
         </div>

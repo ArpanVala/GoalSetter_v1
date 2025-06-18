@@ -5,6 +5,7 @@ import Navbar from "./components/Navbar"
 import Dashboard from './pages/Dashboard'
 import CategoryPage from './pages/CategoryPage'
 import { ToastContainer } from 'react-toastify'
+import AddGoalPage from './pages/AddGoalPage'
 
 const App = () => {
   return (
@@ -17,6 +18,7 @@ const App = () => {
         <Route path="/register" element={<RegisterPage/>} />
         <Route path="/dashboard" element={<Dashboard/>}/>
         <Route path="/category/:id" element={<CategoryPage/>} />
+        <Route path="/add-goal" element={<AddGoalPage/>} />
       </Routes>
     </div>
   )
