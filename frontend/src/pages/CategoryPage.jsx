@@ -94,7 +94,7 @@ const CategoryPage = () => {
           <button className='text-sm px-2 py-1 bg-red-100 text-red-700 hover:bg-red-200 hover:shadow-lg border border-red-700 rounded' onClick={() => setOpenDelete(true)}>Delete Category</button>
 
           <RenameCategoryModal isOpen={openRename} setIsOpen={setOpenRename} categoryId={id} />
-          <DeleteModal isOpen={openDelete} setIsOpen={setOpenDelete} categoryId={id}/>
+          <DeleteModal isOpen={openDelete} setIsOpen={setOpenDelete} id={id} type={'category'}/>
         </div>
       </div>
     </div>

@@ -2,19 +2,29 @@ import { Dialog, DialogBackdrop, DialogPanel, DialogTitle } from '@headlessui/re
 import { useDispatch,useSelector } from 'react-redux'
 import { toast } from 'react-toastify';
 import {FaTrashAlt} from 'react-icons/fa'
-import {deleteCategory} from '../features/categories/categorySlice'
 import { useNavigate } from 'react-router-dom';
+import {deleteCategory} from '../features/categories/categorySlice'
+import {deleteGoal} from '../features/goals/goalSlice'
 
-const DeleteModal = ({isOpen, setIsOpen, categoryId}) => {
+const DeleteModal = ({isOpen, setIsOpen, id, type}) => {
         const dispatch = useDispatch();
         const navigate = useNavigate();
         const {user} = useSelector((state)=>state.auth)
     
         const handleClick = () => {
-            dispatch(deleteCategory(categoryId))
+            if(type === 'goal'){
+                dispatch(deleteGoal(id))    
+                setIsOpen(false);
+                toast.success('Goal deleted successfully');
+                return;
+            }
+            else if(type === 'category'){
+            // If type is 'category', delete the category and all associated goals
+            dispatch(deleteCategory(id))
             setIsOpen(false);
             navigate('/dashboard');
             toast.success('Category deleted successfully');
+            }
         };
   return (
     <div>
@@ -34,10 +44,10 @@ const DeleteModal = ({isOpen, setIsOpen, categoryId}) => {
                 <div className="sm:flex sm:items-start">
                   <div className="mt-3 text-center sm:mt-0 sm:ml-4 sm:text-left">
                     <DialogTitle as="h3" className="text-[22px] font-semibold text-gray-900">
-                     Are you sure you?
+                     Are you sure ?
                     </DialogTitle>
                     <div className="mt-2">
-                    <p className='text-md text-orange-900'>Deleting this category will also delete all goals associated with it.</p>
+                    <p className='text-md text-orange-900'>{type === 'goal' ?  'This goal will be deleted parmanently !':'Deleting this category will also delete all goals associated with it.'}</p>
                     </div>
                   </div>
                 </div>

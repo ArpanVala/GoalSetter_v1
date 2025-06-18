@@ -1,10 +1,11 @@
 import { FaPen, FaTrashAlt } from 'react-icons/fa'
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
 import  {updateIsCompleted} from '../features/goals/goalSlice'
+import DeleteModal from './DeleteModal';
 
 const  ListCategoryGoal = ({goals}) => {
-
+   const [openDelete, setOpenDelete] = useState(false)
   const getPriorityColor = (priority) => {
     switch (priority) {
       case "High":
@@ -86,7 +87,9 @@ const  ListCategoryGoal = ({goals}) => {
                 <p className='text-sm text-gray-400'>{new Date(goal.dueDate).toLocaleDateString()}</p>
                 <div className='mt-2 flex items-center gap-2 '>
                   <button className='text-sm px-2 border-1 hover:bg-blue-200 hover:text-blue-700 bg-gray-100 font-light shadow-2xl rounded'>edit</button>
-                  <button className='text-sm px-2 border-1 hover:bg-red-200 hover:text-red-700 bg-gray-100 font-light shadow-2xl rounded'>delete</button>
+                  <button className='text-sm px-2 border-1 hover:bg-red-200 hover:text-red-700 bg-gray-100 font-light shadow-2xl rounded' onClick={() => setOpenDelete(true)}>delete</button>
+
+                  <DeleteModal isOpen={openDelete} setIsOpen={setOpenDelete} id={goal._id} type={'goal'}/>
                 </div>
               </div>
               <div className="flex items-center gap-4 ">
