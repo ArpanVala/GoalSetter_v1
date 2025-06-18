@@ -1,6 +1,6 @@
-import {useEffect,useState} from 'react'
+import {useEffect,useRef,useState} from 'react'
 import { useDispatch,useSelector } from 'react-redux'
-import { Link, useNavigate } from 'react-router-dom'
+import { Link, useLocation, useNavigate } from 'react-router-dom'
 import { toast } from 'react-toastify'
 import { getGoals, reset } from '../features/goals/goalSlice'
 import {getCategories} from '../features/categories/categorySlice'
@@ -10,6 +10,10 @@ import CategoryModel from '../components/CategoryModel'
 
 const Dashboard = () => {
     const [isOpen, setIsOpen] = useState(false)
+    
+    //for scroll to categories on navbar click
+    const location = useLocation();
+    const categoriesRef = useRef();
   
     const dispatch = useDispatch()
     const navigate = useNavigate()
@@ -26,12 +30,16 @@ const Dashboard = () => {
             toast.error(message)
             console.log(message)
         }
+        // Scroll to categories if the state is set
+        if (location.state?.scrollToCategories) {
+          categoriesRef.current?.scrollIntoView({ behavior: 'smooth' });
+        }
         dispatch(getGoals())
         dispatch(getCategories())
         return () => {
             dispatch(reset())
         }
-    }, [user, navigate,dispatch])
+    }, [user, location, navigate,dispatch])
 
     const {categories} = useSelector((state)=>state.categories)
 
@@ -97,7 +105,7 @@ const Dashboard = () => {
       <div>
       <h3 className="text-lg md:text-xl font-medium mb-2 text-gray-700">List of Categories</h3>
 
-      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
+      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4" ref={categoriesRef}>
         {goalCategories.length < 1 ? (
           // If no categories, show a message and button to create first category
           <div className='col-span-1 sm:col-span-2 md:col-span-3'>

@@ -1,14 +1,9 @@
 import { FaPen, FaTrashAlt } from 'react-icons/fa'
-import React, { useState } from "react";
+import { useEffect } from "react";
+import { useDispatch } from "react-redux";
+import  {updateIsCompleted} from '../features/goals/goalSlice'
 
 const  ListCategoryGoal = ({goals}) => {
-  const [completedGoals, setCompletedGoals] = useState([]);
-
-  const toggleGoal = (id) => {
-    setCompletedGoals((prev) =>
-      prev.includes(id) ? prev.filter((g) => g !== id) : [...prev, id]
-    );
-  };
 
   const getPriorityColor = (priority) => {
     switch (priority) {
@@ -21,6 +16,10 @@ const  ListCategoryGoal = ({goals}) => {
       default:
         return "bg-black";
     }
+  };
+  const dispatch = useDispatch();
+  const handleCheckboxChange = (goal) => {
+    dispatch(updateIsCompleted({ goalId: goal._id, isCompleted: !goal.isCompleted }));
   };
 
   return (
@@ -42,7 +41,7 @@ const  ListCategoryGoal = ({goals}) => {
             <tr
               key={index}
               className={`border-t border-gray-400 hover:bg-gray-50 transition ${
-                completedGoals.includes(goal.id) ? "line-through text-gray-900" : ""
+                goal.isCompleted ? "line-through text-gray-900" : ""
               }`}
             >
               <td className="px-4 py-3">{index + 1}</td>
@@ -60,8 +59,8 @@ const  ListCategoryGoal = ({goals}) => {
               <td className="px-4 py-3 text-center">
                 <input
                   type="checkbox"
-                  checked={completedGoals.includes(goal.id)}
-                  onChange={() => toggleGoal(goal.id)}
+                  checked={goal.isCompleted}
+                  onChange={() => handleCheckboxChange(goal)}
                   className="w-4 h-4 text-blue-600 border-gray-300 rounded"
                 />
               </td>

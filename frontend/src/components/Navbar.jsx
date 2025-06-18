@@ -23,8 +23,9 @@ export default function Navbar() {
   const loggedInLinks = (
     <>
       <li className='hover:text-gray-400 cursor-pointer'><Link to='/dashboard'>Dashboard</Link></li>
-      <li className='hover:text-gray-400 cursor-pointer'>Categories</li>
-      <li className='hover:text-gray-400 cursor-pointer'>Add Goal</li>
+      <li className='hover:text-gray-400 cursor-pointer'><Link to="/dashboard" state={{ scrollToCategories: true }}>
+  Categories</Link></li>
+      <li className='hover:text-gray-400 cursor-pointer'><Link to='/add-goal'>Add New Goal</Link></li>
       <li className='px-2 py-1 bg-gray-100 text-gray-500 rounded-lg hover:bg-gray-200 cursor-pointer' onClick={onLogout}>Logout</li>
       <button className="w-9 h-9 bg-gray-100 rounded-full flex items-center justify-center">
         {/* Notification icon can go here */}

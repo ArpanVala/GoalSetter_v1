@@ -137,4 +137,31 @@ const getCompletedGoals = asyncHandler(async (req, res) => {
     res.status(200).json({ goals });
   });
 
-module.exports = { getGoals, setGoal, updateGoal, deleteGoal, getCompletedGoals };
+//@desc upadte isCompleted status of goal
+//@route PATCH /api/goals/:id/completed
+//@access Private
+
+const updateIsCompleted = asyncHandler(async (req, res) => {
+    const goal = await Goal.findById(req.params.id);
+  
+    if (!goal) {
+      res.status(404);
+      throw new Error('Goal not found');
+    }
+  
+    // Check for the logged in user
+    if (!req.user || goal.user.toString() !== req.user.id) {
+      res.status(401);
+      throw new Error('User not authorized');
+    }
+  
+    // Set isCompleted based on frontend value
+    goal.isCompleted = req.body.isCompleted;
+  
+    const updated = await goal.save();
+    const updatedGoal = await Goal.find({user:req.user.id}).populate('category', 'name')
+  
+    res.status(200).json({ updatedGoal });
+  });
+
+module.exports = { getGoals, setGoal, updateGoal, deleteGoal, getCompletedGoals , updateIsCompleted };

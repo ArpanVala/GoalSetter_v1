@@ -46,6 +46,18 @@ const updateGoal = async(goalData, token) => {
     return response.data.updatedGoal;
 }
 
+//update isCompleted status of goal
+const updateIsCompleted = async(goalId, isCompleted, token) => {
+    const config = {
+        headers:{
+            Authorization: `Bearer ${token}`,
+        }
+    }
+    // Send a PATCH request to update the isCompleted status
+    const response = await axios.patch(API_URL + goalId + '/completed', { isCompleted }, config);
+    return response.data.updatedGoal; // Return the updated goal
+}
+
 //delete goal
 const deleteGoal = async(goalId, token) => {
     const config = {
@@ -62,6 +74,7 @@ const goalService = {
     getGoals,
     getCompletedGoals,
     updateGoal,
-    deleteGoal
+    deleteGoal,
+    updateIsCompleted
 }
 export default goalService;

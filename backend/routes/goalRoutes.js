@@ -1,6 +1,6 @@
 const goalRoutes = require('express').Router();
 const {protect} = require('../middleware/authMiddleware');
-const {getGoals, setGoal, updateGoal, deleteGoal, getCompletedGoals} = require('../controllers/goalController');
+const {getGoals, setGoal, updateGoal, deleteGoal, getCompletedGoals, updateIsCompleted} = require('../controllers/goalController');
 
 //@desc Get goals
 //@route GET /api/goals
@@ -26,5 +26,10 @@ goalRoutes.put('/:id', protect, updateGoal);
 //@route DELETE /api/goals/:id
 //@access Private
 goalRoutes.delete('/:id', protect, deleteGoal);
+
+// @desc Update isCompleted status of goal
+// @route PATCH /api/goals/:id/completed
+goalRoutes.patch('/:id/completed', protect, updateIsCompleted);
+
 
 module.exports = goalRoutes;
