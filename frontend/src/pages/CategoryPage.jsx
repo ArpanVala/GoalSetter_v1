@@ -91,7 +91,7 @@ const CategoryPage = () => {
 
         <div className='text-right space-x-2'>
           <button className='text-sm px-2 py-1 bg-gray-100 hover:bg-gray-200 hover:shadow-lg border rounded ' onClick={() => setOpenRename(true)} >Rename Category</button>
-          <button className='text-sm px-2 py-1 bg-red-100 hover:bg-red-200 hover:shadow-lg border border-red-700 rounded' onClick={() => setOpenDelete(true)}>Delete Category</button>
+          <button className='text-sm px-2 py-1 bg-red-100 text-red-700 hover:bg-red-200 hover:shadow-lg border border-red-700 rounded' onClick={() => setOpenDelete(true)}>Delete Category</button>
 
           <RenameCategoryModal isOpen={openRename} setIsOpen={setOpenRename} categoryId={id} />
           <DeleteModal isOpen={openDelete} setIsOpen={setOpenDelete} categoryId={id}/>
