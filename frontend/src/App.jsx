@@ -7,6 +7,7 @@ import CategoryPage from './pages/CategoryPage'
 import { ToastContainer } from 'react-toastify'
 import AddGoalPage from './pages/AddGoalPage'
 import EditGoalPage from './pages/EditGoalPage'
+import NotFound404 from './pages/NotFound404'
 
 const App = () => {
   return (
@@ -21,6 +22,7 @@ const App = () => {
         <Route path="/category/:id" element={<CategoryPage/>} />
         <Route path="/add-goal" element={<AddGoalPage/>} />
         <Route path="/edit/:id" element={<EditGoalPage/>}/>
+        <Route path="*" element={<NotFound404/>}/>
       </Routes>
     </div>
   )
