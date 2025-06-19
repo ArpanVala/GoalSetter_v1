@@ -43,9 +43,9 @@ const CategoryPage = () => {
         return <div className='text-center text-gray-600'>Category not found</div>
     }
     const categoryName = category.name;
-    const goalList = goals.filter(goal => goal.category._id === id);
-    const totalGoals = goals.filter(goal => goal.category._id === id).length;
-    const completedGoals = goals.filter(goal => goal.category._id === id && goal.isCompleted).length;
+    const goalList = goals.filter(goal => goal?.category._id === id);
+    const totalGoals = goals.filter(goal => goal?.category._id === id).length;
+    const completedGoals = goals.filter(goal => goal?.category._id === id && goal?.isCompleted).length;
     const remainingGoals = totalGoals - completedGoals;
     const progress = totalGoals > 0 ? Math.round((completedGoals / totalGoals) * 100) : '--';
     

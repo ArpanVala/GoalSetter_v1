@@ -55,7 +55,7 @@ const RenameCategoryModal = ({isOpen,setIsOpen, categoryId}) => {
                     <form className="login-form" onSubmit={handleSubmit}>
                         <div className="grid gap-1">
                         <label htmlFor="category" className='text-gray-600 text-md'>New Name</label>
-                        <input id="category" type="text" name="category" value={inputValue} onChange={handleChange} required/>
+                        <input id="category" type="text" name="category" value={inputValue} onChange={handleChange} autoFocus required/>
                         </div>
                     </form>
                     </div>

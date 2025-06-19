@@ -32,7 +32,7 @@ const  ListCategoryGoal = ({goals}) => {
   return (
     <div className="">
     <h1 className='text-lg font-medium mb-1 text-gray-700'>Goal List</h1>
-      <table className="hidden w-full text-sm text-left border border-gray-200 rounded-lg ">
+      {/* <table className="hidden w-full text-sm text-left border border-gray-200 rounded-lg ">
         <thead className="bg-gray-100 text-gray-600 uppercase text-xs">
           <tr>
             <th className="px-4 py-3">#</th>
@@ -82,7 +82,7 @@ const  ListCategoryGoal = ({goals}) => {
             </tr>
           )}
         </tbody>
-      </table>
+      </table> */}
 
       
       <div className='grid grid-cols-1 sm:grid-cols-2 gap-4'>

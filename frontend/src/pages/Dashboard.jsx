@@ -43,8 +43,8 @@ const Dashboard = () => {
 
     let goalCategories = []
     categories.map((c)=>{
-      let totalGoals =  goals.filter(goal => goal.category._id === c._id).length
-      let remGoals =  goals.filter(goal => goal.category._id === c._id && !goal.isCompleted).length
+      let totalGoals =  goals.filter(goal => goal?.category?._id === c._id).length
+      let remGoals =  goals.filter(goal => goal?.category._id === c._id && !goal?.isCompleted).length
       goalCategories.push({
         id:c._id,
         name:c.name,

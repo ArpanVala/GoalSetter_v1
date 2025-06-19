@@ -4,8 +4,7 @@ import { createGoal } from '../features/goals/goalSlice';
 import { getCategories } from '../features/categories/categorySlice';
 import { toast } from 'react-toastify';
 import CategoryModel from '../components/CategoryModel';
-import { useLocation } from 'react-router-dom';
-import { useNavigate } from 'react-router-dom';
+import { useLocation, useNavigate } from 'react-router-dom';
 
 const AddGoalPage = ({categoryId}) => {
   const dispatch = useDispatch();
@@ -40,7 +39,7 @@ const AddGoalPage = ({categoryId}) => {
     dispatch(createGoal({ goal, priority, category, dueDate  }));
     toast.success('Goal added successfully!');
     onReset();
-    navigate('/category/'+category); // Navigate to dashboard and scroll to categories
+    navigate('/category/' + category);
   };
   
   const handleCategoryChange = (e) => {
