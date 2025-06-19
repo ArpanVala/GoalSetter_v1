@@ -6,6 +6,7 @@ import Dashboard from './pages/Dashboard'
 import CategoryPage from './pages/CategoryPage'
 import { ToastContainer } from 'react-toastify'
 import AddGoalPage from './pages/AddGoalPage'
+import EditGoalPage from './pages/EditGoalPage'
 
 const App = () => {
   return (
@@ -19,6 +20,7 @@ const App = () => {
         <Route path="/dashboard" element={<Dashboard/>}/>
         <Route path="/category/:id" element={<CategoryPage/>} />
         <Route path="/add-goal" element={<AddGoalPage/>} />
+        <Route path="/edit/:id" element={<EditGoalPage/>}/>
       </Routes>
     </div>
   )

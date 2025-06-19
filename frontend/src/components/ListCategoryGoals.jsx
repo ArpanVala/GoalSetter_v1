@@ -3,6 +3,7 @@ import { useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
 import  {updateIsCompleted} from '../features/goals/goalSlice'
 import DeleteModal from './DeleteModal';
+import { useNavigate } from 'react-router-dom';
 
 const  ListCategoryGoal = ({goals}) => {
    const [openDelete, setOpenDelete] = useState(false)
@@ -19,9 +20,14 @@ const  ListCategoryGoal = ({goals}) => {
     }
   };
   const dispatch = useDispatch();
+  const navigate = useNavigate();
   const handleCheckboxChange = (goal) => {
     dispatch(updateIsCompleted({ goalId: goal._id, isCompleted: !goal.isCompleted }));
   };
+
+  const onGoalClick = (e) => {
+    navigate(`/edit/${e}`)
+  }
 
   return (
     <div className="">
@@ -86,7 +92,7 @@ const  ListCategoryGoal = ({goals}) => {
                 <h1 className={`${goal.isCompleted ? 'line-through': ''}`}>{goal.goal}</h1>
                 <p className='text-sm text-gray-400'>{new Date(goal.dueDate).toLocaleDateString()}</p>
                 <div className='mt-2 flex items-center gap-2 '>
-                  <button className='text-sm px-2 border-1 hover:bg-blue-200 hover:text-blue-700 bg-gray-100 font-light shadow-2xl rounded'>edit</button>
+                  <button className='text-sm px-2 border-1 hover:bg-blue-200 hover:text-blue-700 bg-gray-100 font-light shadow-2xl rounded' onClick={()=> onGoalClick(goal._id)}>edit</button>
                   <button className='text-sm px-2 border-1 hover:bg-red-200 hover:text-red-700 bg-gray-100 font-light shadow-2xl rounded' onClick={() => setOpenDelete(true)}>delete</button>
 
                   <DeleteModal isOpen={openDelete} setIsOpen={setOpenDelete} id={goal._id} type={'goal'}/>
