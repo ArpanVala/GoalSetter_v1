@@ -3,6 +3,7 @@ import { FaAlignRight, FaAngleUp, FaTasks } from "react-icons/fa";
 import {Link,useNavigate} from "react-router-dom"
 import { useSelector, useDispatch } from "react-redux"
 import {logout, reset} from '../features/auth/authSlice'
+import Logo from '../assets/favicon.png'
 
 export default function Navbar() {
 
@@ -52,7 +53,7 @@ export default function Navbar() {
         {/* Logo */}
         <div className="cursor-pointer">
         <Link to='/' className="flex items-center gap-2">
-          <img src='favicon.png' alt='logo' width={40} height={40}/>
+          <img src={Logo} alt='logo' width={40} height={40}/>
           <h1 className="font-bold text-xl">GoalSetter</h1>
           </Link>
         </div>

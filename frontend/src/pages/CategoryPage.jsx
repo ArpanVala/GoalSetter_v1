@@ -8,18 +8,21 @@ import ListCategoryGoals from '../components/ListCategoryGoals'
 import { toast } from 'react-toastify'
 import DeleteModal from '../components/DeleteModal'
 import RenameCategoryModal from '../components/RenameCategoryModal'
+import Loading from '../components/Loading'
 
 const CategoryPage = () => {
   const [openDelete, setOpenDelete] = useState(false)
   const [openRename, setOpenRename] = useState(false)
+  const [isInitialLoading, setIsInitialLoading] = useState(true)
+
     const { id } = useParams()
     const {user} = useSelector((state) => state.auth);
    
     const navigate = useNavigate()
     const dispatch = useDispatch()
     
-    const {goals, isLoading, isError, message} = useSelector((state)=>state.goals)
-    const {categories} = useSelector((state)=>state.categories)
+    const {goals,  isLoading: goalsLoading, isError, message} = useSelector((state)=>state.goals)
+    const {categories,  isLoading: categoriesLoading} = useSelector((state)=>state.categories)
     
     useEffect(()=>{
         if(!user){
@@ -37,7 +40,24 @@ const CategoryPage = () => {
         dispatch(reset())
         }
     },[user, navigate, dispatch])
-    
+
+    // Check if both goals and categories have finished loading
+    useEffect(() => {
+      if (!goalsLoading && !categoriesLoading && isInitialLoading) {
+          // Add a small delay to ensure smooth transition
+          const timer = setTimeout(() => {
+              setIsInitialLoading(false)
+          }, 500)
+          return () => clearTimeout(timer)
+      }
+  }, [goalsLoading, categoriesLoading, isInitialLoading])
+
+     // Show loading screen while data is being fetched
+     if (isInitialLoading || goalsLoading || categoriesLoading) {
+      return (
+         <Loading/>
+      )
+  }    
     const category = categories.find(c => c._id === id)
     if (!category) {
         return <div className='text-center text-gray-600'>Category not found</div>
