@@ -3,7 +3,6 @@ import {useEffect, useState} from "react"
 import {useSelector, useDispatch} from 'react-redux'
 import {toast} from 'react-toastify'
 import {login, reset} from '../features/auth/authSlice'
-import { FaGoogle } from 'react-icons/fa'
 
 const LoginPage = () => {
   const [formData, setFormData] = useState({
@@ -62,20 +61,10 @@ const LoginPage = () => {
          <input id="password" type="password" name="password" value={password} onChange={onChange} required />
         </div>
 
-        <a href="#" className="mr-auto text-sm underline-offset-4 hover:underline">Forgot your password?</a>
-
         <button type="submit" className="text-white bg-black hover:rounded-full duration-200 transition-all font-semibold  w-full p-2 rounded-lg">Login</button>
       </form>
 
-      <div className="flex flex-col justify-between items-center gap-1">
-        <div className='grid grid-cols-3 items-center gap-2'>
-          <div className='border border-gray-200 w-auto'></div>
-          <p className='text-sm md:text-md text-gray-500 w-full'>or continue with</p>
-          <div className='border border-gray-200 w-auto'></div>
-        </div>
-        
-        <button className='text-black border-2 border-gray-300 bg-gray-200 hover:bg-gray-300 flex items-center gap-2 font-semibold  p-2 rounded-lg'><FaGoogle className=''/>Login with Google</button>
-
+      <div className="">
         <div className='flex justify-between items-center gap-2 mt-3'>
           <p className='text-sm'>Don't have an account? <Link to="/register" className='font-semibold underline'>Sign up</Link></p>
         </div>
