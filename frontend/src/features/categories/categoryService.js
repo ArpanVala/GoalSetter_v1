@@ -1,7 +1,7 @@
 import axios from 'axios';
 
-// const API_URL = 'http://localhost:3000/api/categories/';
-const API_URL = 'https://goalsetter-v1.onrender.com/api/categories/';
+const API_URL = 'http://localhost:3000/api/categories/';
+// const API_URL = 'https://goalsetter-v1.onrender.com/api/categories/';
 
 // Create a new category
 const createCategory = async(categoryData, token) => {

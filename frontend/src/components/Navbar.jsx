@@ -22,8 +22,8 @@ export default function Navbar() {
 
   const loggedInLinks = (
     <>
-      <li className='hover:text-gray-400 cursor-pointer'><Link to='/dashboard'>Dashboard</Link></li>
-      <li className='hover:text-gray-400 cursor-pointer'><Link to='/add-goal'>Add New Goal</Link></li>
+      <li className='hover:text-blue-400 cursor-pointer'><Link to='/dashboard'>Dashboard</Link></li>
+      <li className='hover:text-blue-400 cursor-pointer'><Link to='/add-goal'>Add New Goal</Link></li>
       <li className='px-2 py-1 bg-gray-100 text-gray-500 rounded-lg hover:bg-gray-200 cursor-pointer' onClick={onLogout}>Logout</li>
       <button className="w-9 h-9 bg-gray-100 rounded-full flex items-center justify-center">
         {/* Notification icon can go here */}
@@ -33,8 +33,10 @@ export default function Navbar() {
 
   const loggedOutLinks = (
     <>
-      <li className='hover:text-gray-400 cursor-pointer'>Features</li>
-      <li className='hover:text-gray-400 cursor-pointer'>
+      <li className='hover:text-blue-400 cursor-pointer'><a href="#features">Features</a></li>
+      <li className='hover:text-blue-400 cursor-pointer'><a href="#how-it-works">How It Works</a></li>
+      <li className='hover:text-blue-400 cursor-pointer'><a href="#testimonials">Reviews</a></li>
+      <li className='hover:text-blue-400 cursor-pointer'>
         <Link to='/login'>Log in</Link>
       </li>
       <Link to='/register' className="p-2 bg-blue-500 hover:bg-blue-600 text-white rounded-md cursor-pointer text-center">
@@ -44,12 +46,13 @@ export default function Navbar() {
   );
 
   return (
-    <div className='max-w-[1048px] mx-auto px-4'>
+    <div className='backdrop-blur-md bg-white/70 shadow-sm sticky top-0 z-50'>
+    <div className='max-w-[1048px] mx-auto px-4' >
       <nav className="flex items-center justify-between py-3">
         {/* Logo */}
         <div className="cursor-pointer">
         <Link to='/' className="flex items-center gap-2">
-          <FaTasks/>
+          <img src='favicon.png' alt='logo' width={40} height={40}/>
           <h1 className="font-bold text-xl">GoalSetter</h1>
           </Link>
         </div>
@@ -77,9 +80,7 @@ export default function Navbar() {
           {user ? loggedInLinks : loggedOutLinks}
         </ul>
       )}
-
-      {/* Divider */}
-      <div className='border border-gray-200 md:border-gray-100'></div>
+    </div>
     </div>
   );
 }

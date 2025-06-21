@@ -8,6 +8,7 @@ import { ToastContainer } from 'react-toastify'
 import AddGoalPage from './pages/AddGoalPage'
 import EditGoalPage from './pages/EditGoalPage'
 import NotFound404 from './pages/NotFound404'
+import HomePage from './pages/HomePage'
 
 const App = () => {
   return (
@@ -15,7 +16,7 @@ const App = () => {
     <ToastContainer/>
       <Navbar/>
       <Routes>
-        <Route path="/" element={<LoginPage/>} />
+        <Route path="/" element={<HomePage/>} />
         <Route path="/login" element={<LoginPage/>} />
         <Route path="/register" element={<RegisterPage/>} />
         <Route path="/dashboard" element={<Dashboard/>}/>
