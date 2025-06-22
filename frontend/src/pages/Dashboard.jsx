@@ -81,28 +81,28 @@ const Dashboard = () => {
             </div>
             
             <div className='grid grid-cols-2 md:grid-cols-4 gap-4'>
-                <div className='bg-gradient-to-t from-gray-100 to-gray-200 px-4 py-6 rounded-lg md:border-3 border-transparent hover:border-gray-400 hover:cursor-pointer '>
-                    <h2 className='text-sm md:text-md font-medium text-gray-500 '>Goal Categories</h2>
-                    <h1 className='text-md md:text-lg font-semibold text-gray-700'>{totalCategories}</h1>
+                <div className=' px-4 py-6 rounded-lg bg-violet-50 border-violet-300 border-2  hover:bg-violet-200 hover:cursor-pointer'>
+                    <h2 className='text-sm md:text-md font-medium text-gray-800'>Goal Categories</h2>
+                    <h1 className='text-md md:text-lg font-semibold text-gray-900'>{totalCategories}</h1>
                 </div>
-                <div className='bg-gradient-to-t from-gray-100 to-gray-200 px-4 py-6 rounded-lg md:border-3 border-transparent hover:border-gray-400 hover:cursor-pointer '>
-                    <h2 className='text-sm md:text-md font-medium text-gray-500 '>Total Goals</h2>
-                    <h1 className='text-md md:text-lg font-semibold text-gray-700'>{totalGoals}</h1>
+                <div className=' px-4 py-6 rounded-lg bg-violet-50 border-violet-300 border-2  hover:bg-violet-200 hover:cursor-pointer'>
+                    <h2 className='text-sm md:text-md font-medium text-gray-800'>Total Goals</h2>
+                    <h1 className='text-md md:text-lg font-semibold text-gray-900'>{totalGoals}</h1>
                 </div>
-                <div className='bg-gradient-to-t from-gray-100 to-gray-200 px-4 py-6 rounded-lg md:border-3 border-transparent hover:border-gray-400 hover:cursor-pointer '>
-                    <h2 className='text-sm md:text-md font-medium text-gray-500 '>Completed Goals</h2>
-                    <h1 className='text-md md:text-lg font-semibold text-gray-700'>{completedGoals}</h1>
+                <div className=' px-4 py-6 rounded-lg bg-violet-50 border-violet-300 border-2  hover:bg-violet-200 hover:cursor-pointer '>
+                    <h2 className='text-sm md:text-md font-medium text-gray-800'>Completed Goals</h2>
+                    <h1 className='text-md md:text-lg font-semibold text-gray-900'>{completedGoals}</h1>
                 </div>
-                <div className='bg-gradient-to-t from-gray-100 to-gray-200 px-4 py-6 rounded-lg md:border-3 border-transparent hover:border-gray-400 hover:cursor-pointer '>
-                    <h2 className='text-sm md:text-md font-medium text-gray-500 '>Due Goals</h2>
-                    <h1 className='text-md md:text-lg font-semibold text-gray-700'>{dueGoals}</h1>
+                <div className=' px-4 py-6 rounded-lg bg-violet-50 border-violet-300 border-2  hover:bg-violet-200  hover:cursor-pointer '>
+                    <h2 className='text-sm md:text-md font-medium text-gray-800'>Due Goals</h2>
+                    <h1 className='text-md md:text-lg font-semibold text-gray-900'>{dueGoals}</h1>
                 </div>
             </div>
             
             <div className='my-5'>
                 <h1 className='text-lg md:text-xl  text-gray-700 font-medium'>Quick Actions</h1>
                 <div className='space-x-2 mt-2'>
-                    <button className='bg-blue-500 hover:bg-blue-600 text-blue-50 px-3 py-1 rounded-md'>
+                    <button className='bg-teal-500 hover:bg-teal-600 text-blue-50 px-3 py-1 rounded-md'>
                         <Link to='/add-goal'>Add New Goal</Link>
                     </button>
                     <button className='md:border-2 border-transparent bg-blue-100 hover:border-gray-400 text-gray-700 px-3 py-1 rounded-md' onClick={() => setIsOpen(true)}>

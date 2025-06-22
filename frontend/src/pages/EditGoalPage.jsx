@@ -59,7 +59,7 @@ const EditGoalPage = () => {
     };
     
   return (
-    <div className='max-w-[1048px] mx-auto px-4 my-5 md:my-8'>
+    <div className='max-w-[1048px] mx-auto px-4 my-5 md:my-8  animate-fadeIn'>
     <div className="max-w-xl mx-auto px-2 py-4 md:px-4 md:py-8 bg-white rounded-lg shadow-md">
       <h1 className="text-xl md:text-xxl font-semibold text-gray-600 text-center mb-1">Edit Goal</h1>
 
@@ -70,7 +70,7 @@ const EditGoalPage = () => {
           <input
             type="text"
             placeholder="Enter your goal"
-            className="w-full border-1 border-gray-500 px-4 py-2 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-300"
+            className="w-full border-1 border-gray-500 px-4 py-2 rounded-md"
             value={goal}
             onChange={(e) => setGoal(e.target.value)}
             required
@@ -84,7 +84,7 @@ const EditGoalPage = () => {
           <select required
             value={priority}
             onChange={(e) => setPriority(e.target.value)}
-            className="w-full border-1 border-gray-500 px-4 py-2 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-300"
+            className="w-full border-1 border-gray-500 px-4 py-2 rounded-md"
           >
             <option value="" >Select Priority</option>
             <option value="Low">Low</option>
@@ -99,7 +99,7 @@ const EditGoalPage = () => {
           <select required
             value={category}
             onChange={handleCategoryChange}
-            className="w-full border-1 border-gray-500 px-4 py-2 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-300"
+            className="w-full border-1 border-gray-500 px-4 py-2 rounded-md"
           >
             <option value="">Select Category</option>
             <option value="new" className='bg-teal-50 py-2 text-teal-700'>Add New Category +</option>
@@ -120,7 +120,7 @@ const EditGoalPage = () => {
             type="date"
             value={dueDate}
             onChange={(e) => setDueDate(e.target.value)}
-            className="w-full border-1 border-gray-500 px-4 py-2 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-300"
+            className="w-full border-1 border-gray-500 px-4 py-2 rounded-md"
           />
         </div>
 

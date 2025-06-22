@@ -71,7 +71,7 @@ const CategoryPage = () => {
     
 
   return (
-    <div className='max-w-[1048px] mx-auto px-4 my-5 md:my-8'>
+    <div className='max-w-[1048px] mx-auto px-4 my-5 md:my-8  animate-fadeIn'>
       <div>
         <h1 className='text-lg md:text-2xl font-semibold text-gray-600'>{categoryName}</h1>
 
