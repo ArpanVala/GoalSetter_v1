@@ -3,6 +3,7 @@ import {useEffect, useState} from "react"
 import {useSelector, useDispatch} from 'react-redux'
 import {toast} from 'react-toastify'
 import {login, reset} from '../features/auth/authSlice'
+import { LoadingSpinner } from "../components/LoadingSpinner"
 
 const LoginPage = () => {
   const [formData, setFormData] = useState({
@@ -15,7 +16,7 @@ const LoginPage = () => {
   const navigate = useNavigate()
   const dispatch = useDispatch()
 
-  const {user, isError, isSuccess, message} = useSelector((state) => state.auth)
+  const {user,isLoading, isError, isSuccess, message} = useSelector((state) => state.auth)
   useEffect(()=>{
     if(isError){
       toast.error(message)
@@ -42,6 +43,7 @@ const LoginPage = () => {
     }
     dispatch(login(userData))
   }
+  
   return (
     <div className="max-w-[1048px] mx-auto px-4 my-5 md:my-8 flex justify-center">
     <div className="w-full max-w-md space-y-6">
@@ -61,7 +63,13 @@ const LoginPage = () => {
          <input id="password" type="password" name="password" value={password} onChange={onChange} required />
         </div>
 
-        <button type="submit" className="text-white bg-black hover:rounded-full duration-200 transition-all font-semibold  w-full p-2 rounded-lg">Login</button>
+        <button type="submit" disabled={isLoading}
+          className={`text-white bg-black hover:rounded-full duration-200 transition-all font-semibold w-full p-2 rounded-lg flex items-center justify-center gap-2 ${
+            isLoading ? 'opacity-75 cursor-not-allowed' : ''
+          }`}>
+           {isLoading && <LoadingSpinner />}
+           {isLoading ? 'Logging in...' : 'Login'}
+          </button>
       </form>
 
       <div className="">

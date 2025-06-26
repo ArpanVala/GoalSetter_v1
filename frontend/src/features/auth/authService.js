@@ -1,7 +1,7 @@
 import axios from 'axios';
 
-// const API_URL = 'http://localhost:3000/api/user/'
-const API_URL = 'https://goalsetter-v1.onrender.com/api/user/'
+const API_URL = 'http://localhost:3000/api/user/'
+// const API_URL = 'https://goalsetter-v1.onrender.com/api/user/'
 
 // Register user
 const register = async (userData) => {

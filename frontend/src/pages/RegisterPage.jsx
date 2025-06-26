@@ -5,6 +5,7 @@ import {toast} from 'react-toastify'
 import {register, reset} from '../features/auth/authSlice'
 import { useNavigate } from "react-router-dom"
 import {UserPlus2, Eye, EyeOff, CheckCircle, XCircle} from "lucide-react"
+import { LoadingSpinner } from "../components/LoadingSpinner"
 
 const RegisterPage = () => {
   const [formData, setFormData] = useState({
@@ -22,7 +23,7 @@ const RegisterPage = () => {
   const navigate = useNavigate()
   const dispatch = useDispatch()
 
-  const {user, isError, isSuccess, message} = useSelector((state) => state.auth)
+  const {user, isError, isLoading, isSuccess, message} = useSelector((state) => state.auth)
 
   // Password validation regex - at least 1 uppercase, 1 lowercase, 1 digit, length > 6
   const passwordRegex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d).{7,}$/
@@ -224,14 +225,10 @@ const RegisterPage = () => {
         
         <button 
           type="submit" 
-          className={`text-white font-semibold w-full p-2 rounded-lg transition-all duration-300 ${
-            isPasswordValid && password === confirmPassword 
-              ? 'bg-black hover:bg-gray-800' 
-              : 'bg-gray-400 cursor-not-allowed'
-          }`}
-          disabled={!isPasswordValid || password !== confirmPassword}
-        >
-          Register
+          className={`text-white bg-black hover:rounded-full duration-200 transition-all font-semibold w-full p-2 rounded-lg flex items-center justify-center gap-2 ${isLoading ? 'opacity-75 cursor-not-allowed' : ''}`}
+          disabled={isLoading}>
+           {isLoading && <LoadingSpinner />}
+           {isLoading ? 'Creating Account...' : 'Register'}
         </button>
         </form>
       </div>
