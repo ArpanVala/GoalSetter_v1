@@ -84,7 +84,7 @@ const RegisterPage = () => {
   }
 
   return (
-    <div className="max-w-[1048px] mx-auto px-4 my-5 md:my-8 flex justify-center">
+    <div className="max-w-[1048px] mx-auto px-4 my-5 md:my-8 flex justify-center animate-fadeIn">
     <div className='w-full max-w-md'>
       <div className='flex flex-col items-center justify-center gap-2'>
         <h1 className='text-2xl font-bold'>Welcome !</h1>

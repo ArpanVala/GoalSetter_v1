@@ -24,6 +24,13 @@ const CategoryPage = () => {
     const {goals,  isLoading: goalsLoading, isError, message} = useSelector((state)=>state.goals)
     const {categories,  isLoading: categoriesLoading} = useSelector((state)=>state.categories)
     
+    
+    // Function to fetch data
+    const fetchData = () => {
+      dispatch(getGoals())
+      dispatch(getCategories())
+  }
+
     useEffect(()=>{
         if(!user){
             // If user is not logged in, redirect to login page or show an error
@@ -34,12 +41,25 @@ const CategoryPage = () => {
           toast.error(message)
           console.log(message)
         }
+        fetchData()//for geting 1st goal without reloading
         dispatch(getGoals())
         dispatch(getCategories())
         return () => {
         dispatch(reset())
         }
     },[user, navigate, dispatch])
+     // Refetch data when page regains focus (user returns from add-goal page)
+     useEffect(() => {
+      const handleFocus = () => {
+          fetchData()
+      }
+
+      window.addEventListener('focus', handleFocus)
+      
+      return () => {
+          window.removeEventListener('focus', handleFocus)
+      }
+  }, [dispatch])
 
     // Check if both goals and categories have finished loading
     useEffect(() => {
