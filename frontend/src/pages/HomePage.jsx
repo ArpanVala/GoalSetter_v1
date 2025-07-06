@@ -17,8 +17,6 @@ import {
 } from 'lucide-react';
 
 const HomePage = () => {
-  const [currentTestimonial, setCurrentTestimonial] = useState(0);
-
   const features = [
     {
       icon: Filter,
@@ -46,33 +44,6 @@ const HomePage = () => {
       },
   ];
 
-  const testimonials = [
-    {
-      text: "Liked the UI. Simple, Clean and not overwhelming",
-      author: "Unil Prajapati",
-      role: "Web Developer",
-      rating: 5
-    },
-    {
-        text: "GoalSetter completely changed how I approach my personal development. The category system helps me balance work, health, and personal goals effortlessly.",
-        author: "Sarah Mitchell",
-        role: "Product Manager",
-        rating: 5
-      },
-    {
-      text: "I've tried countless goal-tracking apps, but GoalSetter's visual progress tracking keeps me motivated like nothing else. Finally achieved my fitness goals!",
-      author: "Marcus Johnson",
-      role: "Fitness Enthusiast",
-      rating: 5
-    },
-    {
-      text: "The priority system is genius. I can finally focus on what truly matters instead of getting overwhelmed by my endless to-do list.",
-      author: "Emily Chen",
-      role: "Entrepreneur",
-      rating: 5
-    }
-  ];
-
   const steps = [
     {
       number: "01",
@@ -93,13 +64,6 @@ const HomePage = () => {
       icon: Trophy
     }
   ];
-
-  useEffect(() => {
-    const interval = setInterval(() => {
-      setCurrentTestimonial((prev) => (prev + 1) % testimonials.length);
-    }, 5000);
-    return () => clearInterval(interval);
-  }, []);
 
   return (
     <div className="min-h-screen bg-white  animate-fadeIn">
@@ -261,49 +225,6 @@ const HomePage = () => {
                 )}
               </div>
             ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Testimonials */}
-      <section id="testimonials" className="py-15 bg-gradient-to-br from-emerald-50 to-blue-50">
-        <div className="max-w-[1048px] mx-auto px-4">
-          <div className="text-center mb-10">
-            <h2 className="text-4xl font-bold text-gray-900 mb-2">What Our Users Say</h2>
-            <p className="text-xl text-gray-600">Real results from real people</p>
-          </div>
-
-          <div className="bg-white rounded-3xl p-8 shadow-2xl">
-            <div className="text-center">
-              <div className="flex justify-center mb-5">
-                {[...Array(testimonials[currentTestimonial].rating)].map((_, i) => (
-                  <Star key={i} className="w-6 h-6 text-yellow-400 fill-current" />
-                ))}
-              </div>
-              <blockquote className="text-xl text-gray-700 font-medium mb-5 leading-relaxed">
-                "{testimonials[currentTestimonial].text}"
-              </blockquote>
-              <div>
-                <div className="font-bold text-gray-900 text-xl">
-                  {testimonials[currentTestimonial].author}
-                </div>
-                <div className="text-gray-600">
-                  {testimonials[currentTestimonial].role}
-                </div>
-              </div>
-            </div>
-
-            <div className="flex justify-center mt-6 space-x-3">
-              {testimonials.map((_, index) => (
-                <button
-                  key={index}
-                  onClick={() => setCurrentTestimonial(index)}
-                  className={`w-3 h-3 rounded-full transition-all duration-300 ${
-                    index === currentTestimonial ? 'bg-emerald-500' : 'bg-gray-300'
-                  }`}
-                />
-              ))}
-            </div>
           </div>
         </div>
       </section>
