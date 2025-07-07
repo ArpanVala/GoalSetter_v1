@@ -25,10 +25,7 @@ export default function Navbar() {
     <>
       <li className='hover:text-blue-400 cursor-pointer'><Link to='/dashboard'>Dashboard</Link></li>
       <li className='hover:text-blue-400 cursor-pointer'><Link to='/add-goal'>Add New Goal</Link></li>
-      <li className='px-2 py-1 bg-gray-100 text-gray-500 rounded-lg hover:bg-gray-200 cursor-pointer' onClick={onLogout}>Logout</li>
-      <button className="hidden w-9 h-9 bg-gray-100 rounded-full flex items-center justify-center">
-        {/* Notification icon can go here */}
-      </button>
+      <li className='px-2 py-1 bg-gray-100 text-gray-500 rounded-lg hover:bg-gray-200 cursor-pointer w-fit mx-auto' onClick={onLogout}>Logout</li>
     </>
   );
 
@@ -77,7 +74,7 @@ export default function Navbar() {
 
       {/* Mobile Nav */}
       {menuOpen && (
-        <ul className="md:hidden text-gray-600 flex flex-col gap-4 text-[14px] font-semibold px-2 py-4">
+        <ul className="md:hidden text-gray-600 flex flex-col gap-4 text-[14px]  text-center font-semibold px-2 py-4">
           {user ? loggedInLinks : loggedOutLinks}
         </ul>
       )}

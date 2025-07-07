@@ -15,6 +15,7 @@ import {
   Linkedin,
   Instagram
 } from 'lucide-react';
+import SpotlightCard from '../Reactbits/SpotlightCard/SpotlightCard'
 
 const HomePage = () => {
   const features = [
@@ -97,7 +98,7 @@ const HomePage = () => {
                 </a>
               </div>
 
-              <div className="flex items-center space-x-8 text-sm text-gray-500">
+              <div className="flex items-center  space-x-8 text-sm text-gray-500">
                 <div className="flex items-center">
                   <CheckCircle className="w-4 h-4 text-emerald-500 mr-2" />
                   No credit card required
@@ -163,16 +164,14 @@ const HomePage = () => {
         </div>
       </section>
 
-    <section className=' hidden max-w-[1048px] mx-auto px-4 my-7'>
-    <div className="bg-yellow-50 border border-yellow-400 text-sm rounded-lg p-4">
-                <p className="text-yellow-800 font-medium">
-                  ⚠️ 67% of people abandon their goals within the first month. Why? Because they lack a system.
-                </p>
-              </div>
-
-    </section>
+      <section className=' max-w-[1048px] mx-auto px-4 my-7'>
+          <div className="bg-yellow-50 border border-yellow-400 text-[12px] md:text-sm rounded-lg p-3">
+              <p className="text-yellow-800 font-medium">⚠️ Around 67% of people abandon their goals within the first month. Why? Because they lack a system.</p>
+          </div>
+      </section>
+   
       {/* Features Section */}
-      <section id="features" className="mt-15 bg-white">
+      <section id="features" className="mt-10 bg-white">
         <div className="max-w-[1048px] mx-auto px-4">
           <div className="text-center mb-10">
             <h2 className="text-4xl font-bold text-gray-900 mb-4">
@@ -230,7 +229,8 @@ const HomePage = () => {
       </section>
 
       {/* Final CTA */}
-      <section className="py-20 bg-gradient-to-tr from-teal-400 to-blue-500">
+      <section className="">
+      <SpotlightCard  spotlightColor="rgba(255, 255, 255, 0.6)" className="custom-spotlight-card py-20 bg-gradient-to-tr from-teal-400 to-blue-500 border-none rounded-none">
         <div className="max-w-[1048px] mx-auto px-4  text-center">
           <h2 className="text-4xl md:text-5xl font-bold text-white mb-4">
             Ready to Transform Your Life?
@@ -240,17 +240,18 @@ const HomePage = () => {
           </p>
 
           <div className="flex flex-col sm:flex-row gap-4 justify-center items-center mb-8">
-            <Link to='/register' className="group bg-linear-to-r from-blue-200 to-teal-100 text-gray-700 px-6 py-3 rounded-xl font-bold text-lg hover:bg-gray-50 hover:shadow-xl transform hover:scale-105 transition-all duration-300 flex items-center">
+            <Link to='/register' className="group bg-linear-to-r from-blue-200 to-teal-100 text-gray-700 px-6 py-3 rounded-xl font-bold text-sm md:text-md hover:bg-gray-50 hover:shadow-xl transform hover:scale-105 transition-all duration-300 flex items-center">
               Get Started Free Today
               <ArrowRight className="w-5 h-5 ml-2 group-hover:translate-x-1 transition-transform" />
             </Link>
             <a href="https://www.youtube.com/watch?v=4GpBHTqaSus" target='_blank'>
-            <button className="border-2 border-white text-white px-6 py-3 rounded-xl font-bold text-lg hover:bg-white hover:text-emerald-600 transition-all duration-300">
+            <button className="border-2 border-white text-white px-6 py-3 rounded-xl font-bold text-sm md:text-md hover:bg-white hover:text-emerald-600 transition-all duration-300">
               Watch Demo First
             </button>
             </a>
           </div>
         </div>
+        </SpotlightCard>
       </section>
 
       {/* Footer */}

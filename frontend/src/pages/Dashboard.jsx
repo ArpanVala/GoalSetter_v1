@@ -7,6 +7,8 @@ import {getCategories} from '../features/categories/categorySlice'
 import CategoryList from '../components/CategoryList'
 import CategoryModel from '../components/CategoryModel'
 import Loading from '../components/Loading'
+import SpotlightCard from '../Reactbits/SpotlightCard/SpotlightCard'
+
 
 const Dashboard = () => {
     const [isOpen, setIsOpen] = useState(false)
@@ -81,22 +83,26 @@ const Dashboard = () => {
             </div>
             
             <div className='grid grid-cols-2 md:grid-cols-4 gap-4'>
-                <div className=' px-4 py-6 rounded-lg bg-violet-50 border-violet-300 border-2  hover:bg-violet-200 hover:cursor-pointer'>
+            
+                <SpotlightCard  spotlightColor="rgba(0, 0, 255, 0.15)" className="custom-spotlight-card  px-4 py-6 rounded-lg bg-violet-50 border-violet-300 border-2">
                     <h2 className='text-sm md:text-md font-medium text-gray-800'>Goal Categories</h2>
                     <h1 className='text-md md:text-lg font-semibold text-gray-900'>{totalCategories}</h1>
-                </div>
-                <div className=' px-4 py-6 rounded-lg bg-violet-50 border-violet-300 border-2  hover:bg-violet-200 hover:cursor-pointer'>
-                    <h2 className='text-sm md:text-md font-medium text-gray-800'>Total Goals</h2>
+                </SpotlightCard>
+                
+                <SpotlightCard  spotlightColor="rgba(0, 0, 255, 0.15)" className="custom-spotlight-card  px-4 py-6 rounded-lg bg-violet-50 border-violet-300 border-2">
+                    <h2 className='text-sm md:text-md font-medium text-gray-800'> Total Goals</h2>
                     <h1 className='text-md md:text-lg font-semibold text-gray-900'>{totalGoals}</h1>
-                </div>
-                <div className=' px-4 py-6 rounded-lg bg-violet-50 border-violet-300 border-2  hover:bg-violet-200 hover:cursor-pointer '>
+                </SpotlightCard>
+                
+                <SpotlightCard  spotlightColor="rgba(0, 0, 255, 0.15)" className="custom-spotlight-card  px-4 py-6 rounded-lg bg-violet-50 border-violet-300 border-2">
                     <h2 className='text-sm md:text-md font-medium text-gray-800'>Completed Goals</h2>
                     <h1 className='text-md md:text-lg font-semibold text-gray-900'>{completedGoals}</h1>
-                </div>
-                <div className=' px-4 py-6 rounded-lg bg-violet-50 border-violet-300 border-2  hover:bg-violet-200  hover:cursor-pointer '>
+                </SpotlightCard>
+                
+                <SpotlightCard  spotlightColor="rgba(0, 0, 255, 0.15)" className="custom-spotlight-card  px-4 py-6 rounded-lg bg-violet-50 border-violet-300 border-2">
                     <h2 className='text-sm md:text-md font-medium text-gray-800'>Due Goals</h2>
                     <h1 className='text-md md:text-lg font-semibold text-gray-900'>{dueGoals}</h1>
-                </div>
+                </SpotlightCard>
             </div>
             
             <div className='my-5'>
