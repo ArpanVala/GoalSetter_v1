@@ -33,7 +33,6 @@ export default function Navbar() {
     <>
       <li className='hover:text-blue-400 cursor-pointer'><a href="#features">Features</a></li>
       <li className='hover:text-blue-400 cursor-pointer'><a href="#how-it-works">How It Works</a></li>
-      <li className='hover:text-blue-400 cursor-pointer'><a href="#testimonials">Reviews</a></li>
       <li className='hover:text-blue-400 cursor-pointer'>
         <Link to='/login'>Log in</Link>
       </li>
