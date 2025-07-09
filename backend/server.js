@@ -9,19 +9,18 @@ connectDB();
 
 const app = express();
 
-// Simplified CORS configuration
-const corsOptions = {
-  origin: 'https://goalsetter-arpanvala.netlify.app',
-  methods: ['GET', 'POST', 'PUT', 'PATCH', 'DELETE', 'OPTIONS'],
-  allowedHeaders: ['Content-Type', 'Authorization'],
-  credentials: true,
-  optionsSuccessStatus: 200
-};
+// // Simplified CORS configuration
+// const corsOptions = {
+//   origin: 'https://goalsetter-arpanvala.netlify.app',
+//   methods: ['GET', 'POST', 'PUT', 'PATCH', 'DELETE', 'OPTIONS'],
+//   allowedHeaders: ['Content-Type', 'Authorization'],
+//   credentials: true,
+//   optionsSuccessStatus: 200
+// };
 
-app.use(cors(corsOptions));
+// app.use(cors(corsOptions));
 
 // Alternative: Manual CORS headers (use this if above doesn't work)
-/*
 app.use((req, res, next) => {
   res.header('Access-Control-Allow-Origin', 'https://goalsetter-arpanvala.netlify.app');
   res.header('Access-Control-Allow-Methods', 'GET, POST, PUT, PATCH, DELETE, OPTIONS');
@@ -33,7 +32,7 @@ app.use((req, res, next) => {
   }
   next();
 });
-*/
+
 
 // const allowedOrigins = ['https://goalsetter-arpanvala.netlify.app'];
 // app.use(cors({
@@ -54,7 +53,7 @@ app.use((req, res, next) => {
 // }));
 
 
-// app.use(cors());
+app.use(cors());
 app.use(express.json());
 app.use(express.urlencoded({extended:true}));
  
